@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   web:
-    image: scada:0.2
+    image: scada:latest
     ports:
       - "3000:80"
     volumes:
