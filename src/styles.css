@@ -1,0 +1,212 @@
+/* Reset básico para eliminar márgenes y rellenos por defecto */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: #0056b3 solid 0px; /* Añadido para mostrar el borde de los elementos */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para el menú de la parte superior */
+.header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Asegura que la cabecera esté por encima de otros elementos */
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem; /* Añade un poco de padding para evitar que los elementos toquen los bordes */
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+}
+
+.menu-logo {
+    width: 7%;
+    max-width: 10%;
+    height: auto; /* Ajusta la altura según sea necesario */
+    border: #333 solid 5px; /* Añadido para mostrar el borde de los elementos */
+    display: flex;
+    justify-content: baseline;
+    align-items: top ;
+    margin-right: 3%; /* Espacio entre el logo y el menú */
+}
+
+.menu-logo img {
+    max-width: 100%; /* Asegura que la imagen no sea más ancha que la caja */
+    height: auto; /* Ajusta la altura de la imagen para mantener la proporción */
+    object-fit: cover; /* Ajusta la imagen para cubrir la caja sin deformarse */
+}
+
+.menu-list {
+    display: flex;
+    align-items: center; /* Alinea los elementos al centro del contenedor flex */
+    font-size: 2rem; /* Ajusta el tamaño de la fuente según sea necesario */
+}
+
+.menu-list ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* Ajusta el espacio entre los enlaces */
+    margin: 0;
+    padding: 0;
+}
+
+.menu-list li {
+    position: relative; /* Asegura que el desplegable esté posicionado correctamente */
+}
+
+.menu-list li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.menu-list li a:hover {
+    background-color: #444; /* Color de fondo al pasar el ratón */
+}
+
+/* Estilos del dropdown (menú desplegable) */
+.menu-list ul .dropdown-content {
+    display: none; /* Oculta el menú desplegable por defecto */
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    left: 0; /* Asegura que el submenú se alinee con el elemento del menú */
+}
+
+.menu-list ul .dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.menu-list ul .dropdown-content a:hover {
+    background-color: #444; /* Color de fondo al pasar el ratón */
+}
+
+/* Mostrar el menú cuando el ratón pasa sobre el item 'Proyectos' */
+.menu-list ul .dropdown:hover .dropdown-content {
+    display: block; /* Muestra el menú cuando se hace hover */
+}
+
+/* Estilos del botón de login */
+.login {
+    flex: 1;
+    display: flex;
+    align-self: center;
+    justify-content: flex-end;
+    padding-right: 5%; /* Ajusta el padding-right para el botón de inicio de sesión */
+}
+
+.btn {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Ajustar el margen superior del contenido principal para evitar que se superponga con la cabecera */
+main, .Descargar-proyecto, .footer {
+    margin-top: 6rem; /* Ajusta este valor según la altura de tu cabecera */
+}
+
+.scada {
+    padding: 2rem;
+    text-align: center;
+}
+
+.scada-img img {
+    max-width: 100%;
+    height: auto;
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+.footer-txt, .footer-img {
+    flex: 1;
+}
+
+.footer-img img {
+    max-width: 100%;
+    height: auto;
+}
+
+.footer-bottom {
+    background-color: #222;
+    color: #fff;
+    padding: 0.5rem 0;
+    text-align: center;
+}
+
+/* Asegurarse de que los formularios y sus elementos se distribuyan correctamente */
+.Descargar-proyecto {
+    padding: 2rem;
+    text-align: center;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-container {
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.input-container label {
+    margin-bottom: 0.5rem;
+}
+
+.input-container input {
+    padding: 0.5rem;
+    width: 100%;
+    max-width: 300px;
+}
+
+.input-container i {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+}
