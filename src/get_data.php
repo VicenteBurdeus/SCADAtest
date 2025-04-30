@@ -1,8 +1,8 @@
 <?php
 // Configura aquí tu conexión a la base de datos
-$host = 'localhost';
+$host = 'postgres';
 $port = '5432';
-$dbname = 'queso';
+$dbname = 'Queso';
 $user = 'admin';
 $password = 'admin';
 
@@ -12,7 +12,7 @@ try {
     $pdo = new PDO("pgsql:host=$host;port=$port;dbname=$dbname", $user, $password);
 
     // Consulta base con filtro de id_nodo = 'NT_1'
-    $query = "SELECT fecha, temperatura FROM ntdato WHERE id_nodo = 'NT_1'";
+    $query = "SELECT fecha, temperatura, humedad FROM ntdato WHERE id_nodo = 'NT_1'";
 
     // Filtros de tiempo
     if ($periodo == '1h') {
@@ -31,14 +31,24 @@ try {
     $resultados = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $labels = [];
-    $values = [];
+    $temperaturas = [];
+    $humedades = [];
 
     foreach ($resultados as $row) {
-        $labels[] = $row['fecha'];
-        $values[] = $row['temperatura'];
+        // Formateamos la fecha con precisión de segundos
+        $fecha = new DateTime($row['fecha']);
+        $labels[] = $fecha->format('Y-m-d H:i:s'); // Formato con año, mes, día, hora, minuto, segundo
+
+        $temperaturas[] = $row['temperatura'];
+        $humedades[] = $row['humedad'];
     }
     
-    echo json_encode(['labels' => $labels, 'values' => $values]);
+    // Devolver datos de temperatura y humedad
+    echo json_encode([
+        'labels' => $labels,
+        'temperaturas' => $temperaturas,
+        'humedades' => $humedades
+    ]);
 } catch (PDOException $e) {
     echo json_encode(['error' => $e->getMessage()]);
 }

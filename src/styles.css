@@ -137,6 +137,22 @@ main, .Descargar-proyecto, .footer {
     margin-top: 6rem; /* Ajusta este valor según la altura de tu cabecera */
 }
 
+.main-graph{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.myChart{
+    width: 100%;
+    max-width: 800px; /* Ajusta el ancho máximo según sea necesario */
+    height: 400px; /* Ajusta la altura según sea necesario */
+}
+
 .scada {
     padding: 2rem;
     text-align: center;
@@ -209,4 +225,10 @@ main, .Descargar-proyecto, .footer {
     top: 50%;
     right: 1rem;
     transform: translateY(-50%);
+}
+
+main{
+    padding: 2rem;
+    text-align: center;
+    margin-top: 120px auto;
 }

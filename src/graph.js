@@ -6,9 +6,10 @@ async function fetchData(range) {
         const data = await response.json();
 
         const labels = data.labels;
-        const temperaturas = data.values;
+        const temperaturas = data.temperaturas; // Asegúrate de obtener la variable correcta
+        const humedades = data.humedades; // Obtener también la humedad
 
-        renderChart(labels, temperaturas);
+        renderChart(labels, temperaturas, humedades); // Pasamos las 3 variables
     } catch (error) {
         console.error("Error al obtener datos:", error);
     }

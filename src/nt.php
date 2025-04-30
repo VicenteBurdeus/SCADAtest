@@ -80,6 +80,8 @@
 
     <!-- GRÁFICO -->
     <main class="main-graph container">
+        <h2>Monitor de Humedad y Temperatura</h2>
+        
         <canvas id="myChart"></canvas>
 
         <div class="filter-buttons">
