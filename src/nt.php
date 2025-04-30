@@ -49,7 +49,9 @@
             background-color: #f1f1f1;
         }
     </style>
+    <script src="graph.js"></script>
 </head>
+
 <body>
     <!-- CABECERA -->
     <header class="header">
@@ -102,7 +104,8 @@
     </footer>
 
     <!-- SCRIPT PARA GRAFICO -->
-    <script src="graph.js"></script>
+
+    
 
     <script>
         // Puedes agregar interactividad adicional si lo deseas

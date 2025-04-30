@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   web:
-    image: scada:latest
+    image: ghcr.io/vicenteburdeus/scadatest/scada:latest
     ports:
       - "3000:80"
     volumes:

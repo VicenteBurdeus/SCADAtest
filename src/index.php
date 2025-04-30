@@ -22,8 +22,8 @@
                     <a href="#">Proyectos</a>
                     <ul class="dropdown-content">
                         <li><a href="nt.php">Nodo temperatura</a></li>
-                        <li><a href="#proyecto2">Proyecto 4</a></li>
-                        <li><a href="#proyecto3">Proyecto 3</a></li>
+                        <li><a href="#proyecto2">Proyecto 2</a></li>
+                        <li><a href="#proyecto3">Proyecto 4</a></li>
                     </ul>
                 </li>
                 <li><a href="#contacto">Contacto</a></li>
