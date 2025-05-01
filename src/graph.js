@@ -73,3 +73,4 @@ document.addEventListener("DOMContentLoaded", () => {
 window.onload = function() {
     fetchData('24h'); // o '1h', '7d', 'all' según lo que desees mostrar por defecto
 }
+

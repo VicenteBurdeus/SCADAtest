@@ -10,30 +10,9 @@
     <?php include "download.php";?>
 </head>
 <body>
-    <!-- CABECERA -->
-    <header class="header">
-        <div class="menu-logo">
-            <img src="Images/menu.png" class="menu-icono" alt="menu.png no cargado">
-        </div>
-        <div class="menu-list">
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li class="dropdown">
-                    <a href="#">Proyectos</a>
-                    <ul class="dropdown-content">
-                        <li><a href="nt.php">Nodo temperatura</a></li>
-                        <li><a href="#proyecto2">Proyecto 2</a></li>
-                        <li><a href="#proyecto3">Proyecto 4</a></li>
-                    </ul>
-                </li>
-                <li><a href="#contacto">Contacto</a></li>
-                <li><a href="#sobre-nosotros">Sobre Nosotros</a></li>
-            </ul>
-        </div>
-        <div class="login">
-            <a href="login.php" class="btn">Iniciar sesión</a>
-        </div>
-    </header>
+
+    <?php include "Cabezera.php";?>
+
 
     <section>
         <div class="header-content container">
@@ -113,25 +92,7 @@
             </div>
         </form>
     </section>
-
-    <footer class="footer">
-        <div class="footer-content container">
-            <div class="footer-txt">
-                <h2>SCADA</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.</p>
-            </div>
-            <div class="footer-img">
-                <img src="Images/SCADA.png" alt="SCADA.png not loaded">
-            </div>
-        </div>
-    </footer>
-    <div class="footer-bottom">
-        <p>&copy; 2025 Equipo A9. Todos los derechos reservados.</p>
-        <script>
-            function clean() {
-                window.location.reload();
-            }
-        </script>
-    </div>
+    <?php include "pie.php";?>
 </body>
 </html>
+
