@@ -250,3 +250,83 @@ main, .Descargar-proyecto, .footer {
 .filter-buttons {
     margin-top: 20px; /* Puedes ajustar este valor según lo que necesites */
 }
+
+hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+}
+
+.container p {
+    padding-bottom: 20px;
+}
+
+
+.aboutus {
+    padding: 3rem;
+    text-align: left;
+    margin-bottom: auto;
+}
+
+.contenido-about {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: nowrap; /* ⚠️ Evita que la imagen baje debajo */
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contenido-about .container {
+    flex: 1 1 70%;   /* 🔧 Más ancho para el texto */
+    text-align: left;
+    padding-right: 2rem;  /* 🔧 Espacio interno a la derecha */
+    padding-left: 1rem;   /* 🔧 Espacio interno a la izquierda */
+}
+
+.imagen-circular {
+    flex: 0 0 30%; /* 🔧 Ocupa menos espacio fijo para asegurar que el texto quepa */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagen-circular img {
+    width: 350px; /* 🔧 Un poco más pequeño si hace falta */
+    height: 350px;
+    border-radius: 50%;
+    border: 5px solid black;
+    object-fit: cover;
+}
+
+.contenido-equipo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: nowrap; /* ⚠️ Evita que la imagen baje debajo */
+    gap: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex: 1 1 70%;   /* 🔧 Más ancho para el texto */
+    text-align: left;
+    padding-right: 2rem;  /* 🔧 Espacio interno a la derecha */
+    padding-left: 1rem;   /* 🔧 Espacio interno a la izquierda */
+}
+
+@media (max-width: 768px) {
+    .contenido-about {
+        flex-direction: column;
+    }
+
+    .imagen-circular, .contenido-about .container {
+        flex: 1 1 100%;
+    }
+
+    .imagen-circular img {
+        width: 250px;
+        height: 250px;
+    }
+}

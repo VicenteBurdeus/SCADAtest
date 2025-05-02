@@ -1,9 +1,11 @@
+#file: nt.php
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gráfica SCADA</title>
+    <title>Grafico Temperatura</title>
+    <link rel="icon" type="image/ico" href="Images/Icono.ico">
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -14,7 +16,7 @@
 </head>
 
 <body>
-    <?php include "Cabezera.php";?>
+    <?php include "comons/Cabezera.php";?>
 
     <!-- GRÁFICO -->
     <main class="main-graph container">
@@ -31,7 +33,7 @@
     </main>
 
     <!-- FOOTER -->
-<?php include "Pie.php";?>
+<?php include "comons/Pie.php";?>
 
     <!-- SCRIPT PARA GRAFICO -->
 
