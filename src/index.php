@@ -17,17 +17,7 @@
     <?php include "comons/Cabezera.php";?>
 
 
-    <section>
-        <div class="header-content container">
-            <div class="header-txt">
-                <h1>SCADA</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum doloribus ex cumque.</p>
-            </div>
-            <div class="header-img">
-                <img src="Images/SCADA.png" alt="SCADA.png not loaded">
-            </div>
-        </div>
-    </section>
+
 
     <main class="scada container">
         <h2>Monitor de Humedad y Temperatura</h2>

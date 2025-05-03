@@ -5,7 +5,7 @@
         </div>
         <div class="menu-list">
             <ul>
-                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="index.php">Inicio</a></li>
                 <li class="dropdown">
                     <a href="#">Proyectos</a>
                     <ul class="dropdown-content">
@@ -14,7 +14,7 @@
                         <li><a href="#proyecto3">Proyecto 4</a></li>
                     </ul>
                 </li>
-                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="Contactanos.php">Contacto</a></li>
                 <li><a href="aboutus.php">Sobre Nosotros</a></li>
             </ul>
         </div>

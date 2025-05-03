@@ -5,7 +5,7 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatibus.</p>
         </div>
         <div class="footer-img">
-            <img src="Images/SCADA.png" alt="SCADA.png not loaded">
+            <img src="Images/LogoFR2.png" alt="SCADA.png not loaded">
         </div>
     </div>
 </footer>
