@@ -316,20 +316,6 @@ hr {
     padding-left: 1rem;   /* 🔧 Espacio interno a la izquierda */
 }
 
-@media (max-width: 768px) {
-    .contenido-about {
-        flex-direction: column;
-    }
-
-    .imagen-circular, .contenido-about .container {
-        flex: 1 1 100%;
-    }
-
-    .imagen-circular img {
-        width: 250px;
-        height: 250px;
-    }
-}
 .form-wrapper {
     max-width: 600px;
     margin: 2rem auto;
@@ -375,3 +361,84 @@ hr {
     background-color: #0056b3;
 }
 
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem;
+    }
+
+    .menu {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    .menu-logo {
+        width: 30%;
+        margin-bottom: 1rem;
+    }
+
+    .menu-list ul {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .menu-list {
+        font-size: 1.2rem;
+        justify-content: center;
+    }
+
+    .login {
+        width: 100%;
+        justify-content: center;
+        padding: 1rem 0;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contenido-about {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contenido-equipo {
+        padding: 1rem;
+    }
+
+    .imagen-circular img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .main-graph {
+        width: 95%;
+        margin: 100px auto 0;
+    }
+
+    .form-wrapper {
+        width: 90%;
+        margin: 2rem auto;
+    }
+
+    .Descargar-proyecto {
+        padding: 1rem;
+    }
+
+    .scada {
+        padding: 1rem;
+    }
+
+    .menu-list ul .dropdown-content {
+        position: static;
+        box-shadow: none;
+        width: 100%;
+    }
+
+    .menu-list ul .dropdown:hover .dropdown-content {
+        display: block;
+    }
+}
