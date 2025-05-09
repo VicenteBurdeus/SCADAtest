@@ -3,6 +3,7 @@
     --blanco: #fff; /* Color de texto */
     --azul-turquesa: #67e8f9;
     --header-background: #072531; /* Color de fondo del header */
+    --index-background: #0f0f0f; /* Color de fondo de la página principal */
 }
 
 /* ======================== RESET ======================== */
@@ -190,7 +191,7 @@ body {
 ======================================================================== */
 
 .index {
-    background-color: #0f0f0f;
+    background-color: var(--index-background);
 }
 
 /* ======================== PORTADA ======================== */
@@ -247,6 +248,135 @@ body {
     border-radius: 12px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
 }
+
+/* ======================== CARACTERISTICAS ======================== */
+
+.features-section {
+    padding: 2rem;
+    text-align: center;
+    background-color: #0f0f0f;
+}
+
+.features-section h2 {
+    font-size: 2.5rem;
+    color: var(--blanco);
+    margin-bottom: 1rem;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-top: 2rem;
+}
+
+.feature-card {
+    background-color: #000;
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(255,255,255,0.1);
+    transition: transform 0.2s ease;
+}
+
+.feature-card:hover {
+    transform: scale(1.03);
+}
+
+.feature-card h3 {
+    color: var(--blanco);
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.feature-card p {
+    color: #555;
+    font-size: 1.3rem;
+}
+
+/* ======================== bolas ======================== */
+
+.tech-section {
+    position: relative;
+    width: 100%;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.tech-title {
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 40px;
+    font-family: sans-serif;
+}
+
+.tech-bubble-container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px; /* 🟢 más ancho */
+    height: 550px;      /* 🔵 altura moderada */
+    margin: 0 auto;
+}
+
+.tech-bubble {
+    position: absolute;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s ease;
+    cursor: pointer;
+    transform: scale(1.5);
+}
+
+.tech-bubble img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+}
+
+/* Tooltip */
+.tech-bubble::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: 110%;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-size: 0.8rem;
+    padding: 4px 8px;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(5px);
+    transition: all 0.2s ease;
+}
+
+.tech-bubble:hover::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .tech-bubble-container {
+        max-width: 95%;
+        height: 600px; /* puede aumentarse ligeramente en móvil si lo ves apretado */
+    }
+
+    .tech-bubble {
+        transform: scale(1);
+    }
+
+    .tech-title {
+        font-size: 1.5rem;
+    }
+}
+
 
 
 /* ======================== CONTENIDO PRINCIPAL ======================== */
