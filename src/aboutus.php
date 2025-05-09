@@ -1,4 +1,3 @@
-#file: aboutus.php
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,7 +10,6 @@
 
 <body>
     <?php include "comons/Cabezera.php";?>
-
 
     <main class="aboutus">
         <section class="contenido-about">
@@ -28,16 +26,49 @@
         </section>
         <br>
         <section class="contenido-equipo">
-    <h2>Nuestro Equipo</h2>
-    <br>
-    <ul>
-        <li><a href="https://www.linkedin.com/in/francisco-nortes-novikov-a24864234/" target="_blank">Francisco Nortes</a> - Programador de robots</li>
-        <li><a href="https://www.linkedin.com/in/mario-martinez-carneros-520280332/" target="_blank">Mario Martínez</a> - Técnico administrativo y programador</li>
-        <li><a href="https://explolaboinfantil.blogspot.com/p/en-taiwan.html" target="_blank">Kai Aoiz</a> - Chino (falsificación)</li>
-        <li><a href="https://www.linkedin.com/in/vicente-burdeus-s%C3%A1nchez-3b0430140/" target="_blank">Vicente Burdeus</a> - Desarrollador de backend</li>
-    </ul>
-</section>
-
+            <h2>Nuestro Equipo</h2>
+            <br>
+            <div class="equipo-cajas">
+                <div class="caja-equipo">
+                    <a href="https://www.linkedin.com/in/francisco-nortes-novikov-a24864234/" target="_blank">
+                        <div class="caja-contenido">
+                            <img src="Images/Francisco.png" alt="Francisco Nortes">
+                            <h3>Francisco Nortes</h3>
+                            <p>Programador de robots</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="caja-equipo">
+                    <a href="https://www.linkedin.com/in/mario-martinez-carneros-520280332/" target="_blank">
+                        <div class="caja-contenido">
+                            <img src="Images/Mario.png" alt="Mario Martínez">
+                            <h3>Mario Martínez</h3>
+                            <p>Técnico administrativo y programador</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="caja-equipo">
+                    <a href="https://explolaboinfantil.blogspot.com/p/en-taiwan.html" target="_blank">
+                        <div class="caja-contenido">
+                            <img src="Images/Kai.png" alt="Kai Aoiz">
+                            <h3>Kai Aoiz</h3>
+                            <p>Chino (falsificación)</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="caja-equipo">
+                    <a href="https://www.linkedin.com/in/vicente-burdeus-s%C3%A1nchez-3b0430140/" target="_blank">
+                        <div class="caja-contenido">
+                            <img src="Images/Vicente.png" alt="Vicente Burdeus">
+                            <h3>Vicente Burdeus</h3>
+                            <p>Desarrollador de backend</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
     </main>
 
     <?php include "comons/Pie.php";?>
+</body>
+</html>
