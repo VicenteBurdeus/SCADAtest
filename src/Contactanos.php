@@ -7,17 +7,16 @@
     <link rel="icon" type="image/ico" href="Images/Icono.ico">
     <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
     <?php include "comons/Cabezera.php";?>
 
     <div class="seccion-contacto">
         <div class="formulario">
             <h2>Contáctanos</h2>
-            <form action="procesar_contacto.php" method="post">
-                <input type="text" name="nombre" placeholder="Tu nombre" required>
-                <input type="email" name="email" placeholder="Tu correo electrónico" required>
-                <textarea name="mensaje" placeholder="Escribe tu mensaje aquí..." rows="6" required></textarea>
+            <form id="contactForm" method="post">
+                <input type="text" name="nombre" id="nombre" placeholder="Tu nombre" required>
+                <input type="email" name="email" id="email" placeholder="Tu correo electrónico" required>
+                <textarea name="mensaje" id="mensaje" placeholder="Escribe tu mensaje aquí..." rows="6" required></textarea>
                 <button type="submit">Enviar</button>
             </form>
         </div>
@@ -28,5 +27,31 @@
     </div>
 
     <?php include "comons/Pie.php";?>
-</body>
 
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevenir que el formulario se envíe de manera tradicional
+
+            const formData = new FormData(this);
+
+            fetch('/Scripts/procesar_contacto.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'ok') {
+                    alert("Mensaje enviado con éxito.");
+                    document.getElementById('contactForm').reset(); // Limpiar el formulario
+                } else if (data.status === 'error_campos') {
+                    alert("Todos los campos son obligatorios.");
+                } else if (data.status === 'error_db') {
+                    alert("Error al guardar en la base de datos.");
+                } else if (data.status === 'error_conexion') {
+                    alert("Error al conectar con la base de datos.");
+                }
+            })
+        });
+    </script>
+</body>
+</html>

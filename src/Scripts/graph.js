@@ -5,11 +5,29 @@ async function fetchData(range) {
         const response = await fetch(`get_data.php?periodo=${range}`);
         const data = await response.json();
 
-        const labels = data.labels;
-        const temperaturas = data.temperaturas; // Asegúrate de obtener la variable correcta
-        const humedades = data.humedades; // Obtener también la humedad
+        let labels = data.labels;
+        const temperaturas = data.temperaturas;
+        const humedades = data.humedades;
 
-        renderChart(labels, temperaturas, humedades); // Pasamos las 3 variables
+        // Si el rango es menor a 24h, solo mostramos la hora
+        if (range === '1h' || range === '24h' || range === '6h' || range === '12h') {
+            labels = labels.map(label => {
+                const date = new Date(label);
+                return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            });
+        }else{
+            labels = labels.map(label => {
+                const date = new Date(label);
+                return date.toLocaleString([], {
+                    year: '2-digit',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit'
+                }) + ":00"; // añade minutos ":00"
+            });
+        }
+
+        renderChart(labels, temperaturas, humedades);
     } catch (error) {
         console.error("Error al obtener datos:", error);
     }
