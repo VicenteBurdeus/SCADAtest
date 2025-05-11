@@ -1,7 +1,6 @@
 // Función para cambiar el texto del botón
 function showPopup(message) {
     //coje el texto del boton 
-    
     const submitButton = document.querySelector('button[type="submit"]');
     const textbutton = submitButton.textContent;
     submitButton.textContent = message;
