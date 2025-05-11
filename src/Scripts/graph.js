@@ -2,7 +2,7 @@ let chart;
 
 async function fetchData(range) {
     try {
-        const response = await fetch(`get_data.php?periodo=${range}`);
+        const response = await fetch(`Scripts/get_data.php?periodo=${range}`);
         const data = await response.json();
 
         let labels = data.labels;

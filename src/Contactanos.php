@@ -26,7 +26,14 @@
         </div>
     </div>
 
+            <!-- Popup -->
+    <div id="popup" class="popup">
+        <p id="popupMessage"></p>
+    </div>
+    
     <?php include "comons/Pie.php";?>
+    
+
 
     <script>
         document.getElementById('contactForm').addEventListener('submit', function(event) {
@@ -41,17 +48,18 @@
             .then(response => response.json())
             .then(data => {
                 if (data.status === 'ok') {
-                    alert("Mensaje enviado con éxito.");
+                    showPopup("Mensaje enviado correctamente.");
                     document.getElementById('contactForm').reset(); // Limpiar el formulario
                 } else if (data.status === 'error_campos') {
-                    alert("Todos los campos son obligatorios.");
+                    showPopup("Por favor, completa todos los campos.");
                 } else if (data.status === 'error_db') {
-                    alert("Error al guardar en la base de datos.");
+                    showPopup("Error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde.");
                 } else if (data.status === 'error_conexion') {
-                    alert("Error al conectar con la base de datos.");
+                    showPopup("Error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde.");
                 }
             })
         });
     </script>
+    <script src="Scripts/popupabout.js"></script>
 </body>
 </html>

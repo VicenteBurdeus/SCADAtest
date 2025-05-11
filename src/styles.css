@@ -482,6 +482,11 @@ main {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
+.button-dark {
+    background-color: #d07f4a; /* Un color más oscuro que el original */
+    cursor: not-allowed; /* Cambiar el cursor para indicar que no es clickeable */
+    opacity: 0.7; /* O también puedes usar opacity para hacerlo más translúcido */
+}
 /* Media query para dispositivos móviles y pantallas pequeñas */
 @media (max-width: 768px) {
     .seccion-contacto {
@@ -512,6 +517,7 @@ main {
     .seccion-contacto iframe {
         height: 300px; /* Ajustar la altura del mapa en móviles */
     }
+ 
 }
 
 /* Igualar altura de columnas en escritorio */
@@ -526,6 +532,7 @@ main {
     .seccion-contacto iframe {
         flex: 1;
     }
+
 }
 
 /* =====================================================================
