@@ -766,3 +766,190 @@ hr {
     padding: 0.5rem 0;
     text-align: center;
 }
+
+
+/* =======================================================================================
+==========================================================================================
+======================== MQTT.PHP ========================================================
+==========================================================================================
+==========================================================================================
+==========================================================================================*/
+
+/* ======================== MQTT ======================== */
+#app {
+    margin-top: 50px;
+    display: flex;
+    height: calc(95vh - 50px); /* Ajusta la altura para que no cubra el header */
+    margin-bottom: 0px;
+}
+
+.sidebar {
+    margin: 20px;
+    border: #d07f4a solid 5px;
+    border-radius: 15px;
+    width: 25%;
+    height: 100%;
+    background-color: #1E1E1E;
+    color: var(--blanco);
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.sidebar h2 {
+    margin-top: 0;
+    font-size: 20px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 10px;
+}
+
+.topic {
+    margin-top: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
+    background-color: #e68a54;
+    border: #df6a26 solid 3px;
+    border-radius: 10px;
+    padding: 10px;
+    transition: transform 0.2s ease;
+}
+
+.topic:hover {
+    transform: scale(1.03);
+    cursor: pointer;
+}
+
+.statusAndChat {
+    display: flex;
+    flex-direction: column; /* ✅ Ahora sí estarán uno encima del otro */
+    width: 100%;
+    height: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+.chat {
+    flex: 1; /* ✅ Para ocupar el espacio restante debajo del status */
+    display: flex;
+    flex-direction: column;
+    background-color: #2b2b2b;
+    background-image: url(Images/ChatBackground.png);
+    background-repeat: repeat; /* se repite automáticamente */
+    background-size: auto; /* o puedes usar 'contain' o 'cover' según prefieras */
+    margin-right: 20px;
+    border: #d07f4a solid 5px;
+    border-radius: 15px;
+}
+
+.chat-header {
+    padding: 15px;
+    font-weight: bold;
+    background-color: #1E1E1E;
+    color: var(--blanco);
+    border-radius: 12px 12px 0 0;
+}
+
+
+.messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message {
+    max-width: 80%;
+    padding: 10px 15px;
+    border-radius: 10px;
+    position: relative;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message .topic-label {
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 4px;
+    color: #666;
+    border-bottom: 2px solid #ccc; /* Usar el mismo color que el borde de los mensajes */
+    padding-bottom: 4px; /* Espacio entre el texto y la línea */
+}
+
+.message .message-content {
+    margin-top: 8px; /* Espacio entre la línea divisoria y el contenido */
+}
+
+.message.received {
+    align-self: flex-start;
+    background-color: #e0e0e0;
+    border: #ccc solid 4px; /* Borde gris claro */
+}
+
+.message.sent {
+    align-self: flex-end;
+    background-color: #d1f5d3;
+    border: #a3d8a0 solid 4px; /* Borde verde claro */
+}
+
+.message.received .topic-label {
+    border-bottom: 2px solid #ccc; /* Línea divisoria gris claro */
+}
+
+.message.sent .topic-label {
+    border-bottom: 2px solid #a3d8a0; /* Línea divisoria verde claro */
+}
+
+
+.message-form {
+    display: flex;
+    border-top: 1px solid #ccc;
+    padding: 10px;
+    background-color: #fafafa;
+}
+
+.message-form input {
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-right: 10px;
+}
+
+.message-form button {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.message-form button:hover {
+    background-color: #45a049;
+}
+
+.status {
+    padding: 1em;
+    font-weight: bold;
+    border-radius: 5px;
+    color: white;
+    width: fit-content;
+    margin-bottom: 1em;
+}
+
+.status.success {
+    background-color: #28a745; /* verde */
+}
+
+.status.error {
+    background-color: #dc3545; /* rojo */
+}
+
+.status.warning {
+    background-color: #ffc107; /* naranja */
+    color: black; /* mejor contraste con fondo naranja */
+}
