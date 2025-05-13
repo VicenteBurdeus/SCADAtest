@@ -15,7 +15,7 @@ function get_topics() {
 function get_msg($topic) {
 
     $pdo = new PDO("pgsql:host=postgres;port=5432;dbname=Queso", "admin", "admin");
-    $queery = "SELECT * FROM mqtt_datos join mqtt_topics on mqtt_topics.id_topic = mqtt_datos.id_dato where mqtt_topics.topic = :topic order by mqtt_datos.fecha desc limit 5;";
+    $queery = "SELECT * FROM mqtt_datos join mqtt_topics on mqtt_topics.id_topic = mqtt_datos.id_dato where mqtt_topics.topic = :topic order by mqtt_datos.fecha asc limit 50;";
     $stmt = $pdo->prepare($queery);
     $stmt->bindParam(':topic', $topic);
     $stmt->execute();

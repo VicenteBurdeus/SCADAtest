@@ -7,6 +7,9 @@ const chatHeader = document.getElementById("chat-header");
 const messageInput = document.getElementById("messageInput");
 const sendBtn = document.getElementById("sendBtn");
 
+let lastMessages = [];
+
+
 let selectedTopic = null;
 let fallbackMode = false;
 
@@ -21,6 +24,23 @@ const fallbackData = {
     ]
 };
 
+function checkForNewMessages() {
+    if (!selectedTopic || fallbackMode) return;
+
+    fetch(`Scripts/get_mqtt_db.php?action=get_msg&topic=${selectedTopic}`)
+        .then(response => response.json())
+        .then(data => {
+            // Comparar longitud o contenido
+            if (JSON.stringify(data) !== JSON.stringify(lastMessages)) {
+                lastMessages = data;
+                loadMessages(data);
+            }
+        })
+        .catch(error => {
+            console.error("Error al actualizar mensajes automáticamente:", error);
+        });
+}
+
 // Función para cargar los topics
 function loadTopics(topics) {
     topicsDiv.innerHTML = "";
@@ -31,26 +51,32 @@ function loadTopics(topics) {
         el.onclick = () => {
             selectedTopic = topic;
             chatHeader.textContent = `Topic: ${selectedTopic}`;
-            
-        fetch(`Scripts/get_mqtt_db.php?action=get_msg&topic=${selectedTopic}`)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data); // Procesa los datos recibidos
-                loadMessages(data); // Llama a tu función de carga de mensajes, por ejemplo
+
+            fetch(`Scripts/get_mqtt_db.php?action=get_msg&topic=${selectedTopic}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data); // Procesa los datos recibidos
+                    loadMessages(data);
+                    lastMessages = data;  // ← Añadir esta línea
             })
-            .catch(error => {
-                console.error("Error al obtener los mensajes:", error);
+                .catch(error => {
+                    console.error("Error al obtener los mensajes:", error);
             });
         };
         topicsDiv.appendChild(el);
     });
 }
 
+setInterval(checkForNewMessages, 3000);
+
+
+
 // Función para cargar los mensajes
 function loadMessages(msgs) {
     messagesDiv.innerHTML = "";
     if (!msgs || msgs.length === 0) {
         messagesDiv.innerHTML = "<em>No hay mensajes.</em>";
+        lastMessages = [];
         return;
     }
     msgs.forEach(m => {
@@ -60,7 +86,9 @@ function loadMessages(msgs) {
         messagesDiv.appendChild(msgDiv);
     });
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    lastMessages = msgs; // ← actualiza la caché
 }
+
 
 sendBtn.onclick = () => {
     const text = messageInput.value.trim();
