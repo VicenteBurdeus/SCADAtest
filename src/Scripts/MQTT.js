@@ -1,4 +1,4 @@
-const socket = io("http://localhost:3000", { timeout: 2000 });
+//const socket = io("http://localhost:3000", { timeout: 2000 });
 
 const statusDiv = document.getElementById("status");
 const topicsDiv = document.getElementById("topics");
@@ -21,6 +21,7 @@ const fallbackData = {
     ]
 };
 
+// Función para cargar los topics
 function loadTopics(topics) {
     topicsDiv.innerHTML = "";
     topics.forEach(topic => {
@@ -29,14 +30,23 @@ function loadTopics(topics) {
         el.textContent = topic;
         el.onclick = () => {
             selectedTopic = topic;
-            chatHeader.textContent = `Topic: ${topic}`;
-            loadMessages(fallbackMode ? fallbackData[topic] : []);
-            if (!fallbackMode) socket.emit("getMessages", topic);
+            chatHeader.textContent = `Topic: ${selectedTopic}`;
+            
+        fetch(`Scripts/get_mqtt_db.php?action=get_msg&topic=${selectedTopic}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data); // Procesa los datos recibidos
+                loadMessages(data); // Llama a tu función de carga de mensajes, por ejemplo
+            })
+            .catch(error => {
+                console.error("Error al obtener los mensajes:", error);
+            });
         };
         topicsDiv.appendChild(el);
     });
 }
 
+// Función para cargar los mensajes
 function loadMessages(msgs) {
     messagesDiv.innerHTML = "";
     if (!msgs || msgs.length === 0) {
@@ -81,7 +91,7 @@ function addMessageToChat(msg) {
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }
 
-
+// Función para actualizar el estado de la conexión
 function setStatus(text, type) {
     statusDiv.textContent = text;
     statusDiv.classList.remove("success", "error", "warning");
@@ -95,28 +105,18 @@ function setStatus(text, type) {
     }
 }
 
-socket.on("connect", () => {
-    fallbackMode = false;
-    setStatus("✅ Conectado al backend", "success");
-    socket.emit("getTopics");
-});
+// Al cargar la página, solicitamos los topics
+window.onload = () => {
+    // Realizamos la petición para obtener los topics
+    fetch("Scripts/get_mqtt_db.php?action=get_topics")
+        .then(response => response.json())
+        .then(topics => {
+            loadTopics(topics);  // Cargamos los topics al frontend
+        })
+        .catch(error => {
+            console.error("Error al obtener los topics:", error);
+            fallbackMode = true;
+            loadTopics(Object.keys(fallbackData));  // Cargar datos de prueba en caso de error
+        });
+};
 
-socket.on("disconnect", () => {
-    setStatus("⚠️ Desconectado del backend. Usando datos de prueba.", "warning");
-    fallbackMode = true;
-    loadTopics(Object.keys(fallbackData));
-});
-
-socket.on("connect_error", () => {
-    setStatus("❌ No se pudo conectar al backend. Mostrando datos de prueba.", "error");
-    fallbackMode = true;
-    loadTopics(Object.keys(fallbackData));
-});
-
-socket.on("topics", (topics) => loadTopics(topics));
-socket.on("messages", (msgs) => loadMessages(msgs));
-socket.on("message", (msg) => {
-    if (msg.topic === selectedTopic) {
-        addMessageToChat({ ...msg, sender: "server" });
-    }
-});
