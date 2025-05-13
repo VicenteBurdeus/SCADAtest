@@ -4,7 +4,7 @@ function get_topics() {
 
     $pdo = new PDO("pgsql:host=postgres;port=5432;dbname=Queso", "admin", "admin");
     
-    $stmt = $pdo->prepare("SELECT DISTINCT topic FROM mqtt_topics order by topic desc");
+    $stmt = $pdo->prepare("SELECT DISTINCT topic FROM mqtt_topics order by topic ASC");
     $stmt->execute();
     $topics = $stmt->fetchAll(PDO::FETCH_COLUMN, 0);
     // Devolver los topics como JSON
