@@ -17,16 +17,9 @@
             <h2>Topics</h2>
             <div id="topics"></div>
         </div>
-        <div class="statusAndChat">
-            <div class="status" id="status">Conectando al servidor...</div>
-            <div class="chat">
-                <div id="chat-header" class="chat-header">Selecciona un topic</div>
-                <div id="messages" class="messages"></div>
-                <div class="message-form">
-                    <input type="text" id="messageInput" placeholder="Escribe un mensaje..." />
-                    <button id="sendBtn">Enviar</button>
-                </div>
-            </div>
+        <div class="chat">
+            <div id="chat-header" class="chat-header">Selecciona un topic</div>
+            <div id="messages" class="messages"></div>
         </div>
     </div>
     <?php include "comons/Pie.php";?>
