@@ -65,6 +65,31 @@ function loadTopics(topics) {
     });
 }
 
+function formatFecha(fechaStr) {
+    // Cortamos a milisegundos
+    const fechaCortada = fechaStr.replace(/^(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})\.(\d{3})\d+$/, '$1.$2');
+    const fecha = new Date(fechaCortada.replace(" ", "T")); // Convertir a formato ISO compatible
+
+    const now = new Date();
+
+    const pad = n => n.toString().padStart(2, '0');
+
+    // Redondeo a la décima de segundo más cercana
+    const roundedMs = Math.round(fecha.getMilliseconds() / 100) * 100;
+
+    const hora = `${pad(fecha.getHours())}:${pad(fecha.getMinutes())}:${pad(fecha.getSeconds())}.${roundedMs / 100}`;
+
+    const isToday =
+        fecha.getDate() === now.getDate() &&
+        fecha.getMonth() === now.getMonth() &&
+        fecha.getFullYear() === now.getFullYear();
+
+    if (isToday) {
+        return hora;
+    } else {
+        return `${pad(fecha.getDate())}/${pad(fecha.getMonth() + 1)}/${fecha.getFullYear()} ${hora}`;
+    }
+}
 
 function loadMessages(msgs) {
     messagesDiv.innerHTML = "";
@@ -79,7 +104,7 @@ function loadMessages(msgs) {
         msgDiv.innerHTML = `
             <div class="message topic-label">${selectedTopic}</div>
             ${m.payload}
-            <div class="message-timestamp">${m.timestamp}</div>
+            <div class="message-timestamp">${formatFecha(m.fecha)}</div>
         `;
         messagesDiv.appendChild(msgDiv);
     });
