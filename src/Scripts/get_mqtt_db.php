@@ -13,9 +13,16 @@ function get_topics() {
 
 // Definir la función para obtener los mensajes de un topic
 function get_msg($topic) {
-
     $pdo = new PDO("pgsql:host=postgres;port=5432;dbname=Queso", "admin", "admin");
-    $queery = "SELECT * FROM mqtt_datos join mqtt_topics on mqtt_topics.id_topic = mqtt_datos.id_dato where mqtt_topics.topic = :topic order by mqtt_datos.fecha asc limit 50;";
+    $queery = "SELECT * FROM (
+                   SELECT * 
+                   FROM mqtt_datos 
+                   JOIN mqtt_topics ON mqtt_topics.id_topic = mqtt_datos.id_dato
+                   WHERE mqtt_topics.topic = :topic 
+                   ORDER BY mqtt_datos.fecha DESC 
+                   LIMIT 50
+               ) sub
+               ORDER BY fecha ASC;";
     $stmt = $pdo->prepare($queery);
     $stmt->bindParam(':topic', $topic);
     $stmt->execute();
@@ -23,6 +30,7 @@ function get_msg($topic) {
     // Devolver los mensajes como JSON
     echo json_encode($messages);
 }
+
 
 // Verifica qué acción se solicita a través de GET o POST
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
