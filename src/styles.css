@@ -941,11 +941,6 @@ hr {
     transition: background-color 0.3s ease;
 }
 
-/* Animación slideInLeft solo para mensajes recibidos */
-.message.received {
-    animation: slideInLeft 0.5s ease forwards;
-}
-
 /* Cambio de fondo en hover para mensajes */
 .message:hover {
     background-color: #dcdcdc;
